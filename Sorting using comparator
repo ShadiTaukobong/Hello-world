@@ -1,0 +1,93 @@
+package comparatorSort;
+public class MainComparator{
+public static void main(String args[]){
+
+ArrayList<Employee> = new ArrayList<Employee>();
+
+employees.add(new Employee(10034, "Robert Bliss", "Finance"));
+employees.add(new Employee(10085, "Erik Stefler", "Finance" ));
+employees.add(new Employee(10098, "Steve jacobs", "HR "));
+employees.add(new Employee(10276, "Shaun Viviers", "HR"  ));
+employees.add(new Employee(10357, "Erik Stefler", "Finance"));
+
+System.out.println("Emp_Id  Emp_Name  Department);
+
+Iterator<Employee> itr= employees.iterator();
+while(itr.hasNext()){
+Employee e= (Employee)itr.next());
+System.out.println(e.Emp_Id+""+e.Emp_name+""+e.Department);
+}
+
+Collections.sort(employees, new NameComparator());
+Collections.sort(employees,new Department());
+Iterator<Employee> itr1= employees.iterator();
+while(itr1.hasNext()){
+Employee e=(Employee)itr1.next();
+System.out.println(e.Emp_Id+""+e.Emp_name+""+e.Department);
+}
+}
+}
+//new class
+package comparatorSort;
+
+public class Employee {
+	int empId;  
+	String empname;  
+	String department;  
+	Employee(int empId,String empname,String department){  
+	this.empId=empId;  
+	this.empname=empname;  
+	this.department=department;  
+	}
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empname=" + empname
+				+ ", department=" + department + "]";
+	}  
+
+}
+//new class
+package comparatorSort;
+
+import java.util.Comparator;
+class EmployeeName implements Comparator<Object>{  
+public int compare(Object o1,Object o2){  
+Employee e1=(Employee)o1;  
+Employee e2=(Employee)o2;  
+  
+return e1.empname.compareTo(e2.empname);  
+}  
+
+}
+
+//new class
+package  comparatorSort;
+
+import java.util.*;  
+class Department implements Comparator<Object>{  
+public int compare(Object o1,Object o2){  
+Employee e1=(Employee)o1;  
+Employee e2=(Employee)o2;  
+  
+return e1.department.compareTo(e2.department);  
+}  
+
+}
+
+//new classpackage comparatorSort;
+
+import java.util.*;  
+
+	class EmployeeId implements Comparator<Employee>{  
+	public int compare(Employee o1,Employee o2){  
+	Employee e1=(Employee)o1;  
+	Employee e2=(Employee)o2;  
+	  
+	if(o1.empId==e2.empId)  
+	return 0;  
+	else if(o1.empId>e2.empId)  
+	return 1;  
+	else  
+	return -1;  
+	}  
+}
